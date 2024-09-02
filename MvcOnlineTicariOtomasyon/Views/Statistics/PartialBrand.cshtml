@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.GroupClass3>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Marka Ürün Tablosu</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Marka</th>
+                    <th>Progress Bar</th>
+                    <th style="width: 40px">Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int sequnceNo = 0;}
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@{sequnceNo++;} @sequnceNo</td>
+                        <td>@x.Brand  </td>
+                        <td>
+
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning" style="width: @((@x.Count)*(@ViewBag.BrandCount))%"></div>
+                            </div>
+
+                           
+                        </td>
+                        <td><span class="badge bg-warning">@x.Count </span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -1,0 +1,40 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model Product
+@{
+    ViewBag.Title = "BringProduct";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Ürün Güncelle</h2>
+<br />
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ProductID)
+   <label>Ürün Adı</label>
+    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control", @required = "" })
+    <br />
+    <label>Marka</label>
+    @Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+    <br />
+    <label>Stok</label>
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    <label>Alış Fiyatı</label>
+    @Html.TextBoxFor(x => x.PurchasePrice, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PurchasePrice, "", new { @style = "color:red" })
+    <br />
+    <label>Satış Fiyatı</label>
+    @Html.TextBoxFor(x => x.SalesPrice, new { @class = "form-control", @required = "" })
+    <br />
+    <label>Kategori</label>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.value, new { @class = "form-control" })
+    <br />
+    <label>Görsel</label>
+    <input type="file" name="ProductImagePath" />
+   
+    <br />
+    <button class="btn btn-primary" style="width:120px"><i class="fas fa-pencil-alt"></i> Güncelle</button>
+    <a class="btn btn-secondary" href="/Product/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+}
+<br />

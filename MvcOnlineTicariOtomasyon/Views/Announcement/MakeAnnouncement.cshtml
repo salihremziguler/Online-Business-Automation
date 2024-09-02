@@ -1,0 +1,28 @@
+﻿﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Message
+@{
+    ViewBag.Title = "MakeAnnouncement";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Duyuru Yayınla</h2>
+<br />
+<form class="form-group" method="post">
+    <input type="text" name="Receiver" value="admin" class="form-control" readonly hidden />
+    <br />
+    <label>Gönderen</label>
+    <input type="text" name="Sender" value="admin" class="form-control" readonly />
+    <br />
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "" })
+    <br />
+    <label>İçerik</label>
+    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @required = "" })
+    <br />
+    <label>Tarih</label>
+    <input type="text" name="Date" value="@DateTime.Now" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary" style="width:100px"><i class="fas fa-bullhorn"></i> Yayınla</button>
+    <a class="btn btn-secondary" href="/Announcement/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+</form>
+

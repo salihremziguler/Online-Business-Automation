@@ -1,0 +1,27 @@
+﻿﻿@model MvcOnlineTicariOtomasyon.Models.Classes.CargoDetail
+@{
+    ViewBag.Title = "AddCargo";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Kargo Girişi</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.TrackingCode)
+    <input type="text" value="@ViewBag.tcode" class="form-control" name="TrackingCode" readonly />
+    <br />
+    @Html.LabelFor(x => x.Personel)
+    @Html.TextBoxFor(x => x.Personel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Receiver)
+    @Html.TextBoxFor(x => x.Receiver, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Receiver, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Date)
+    <input type="text" name="Date" value="@DateTime.Now" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary" style="width:inherit"><i class="fas fa-plus"></i> Kargo Gir</button>
+    <a class="btn btn-secondary" href="/Cargo/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+</form>
+

@@ -1,0 +1,43 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model Invoice
+@{
+    ViewBag.Title = "BringInvoice";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<br />
+<h2>Fatura Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("UpdateInvoice", "Invoice", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.InvoiceID)
+    @Html.LabelFor(x => x.InvoiceSerialNo)
+    @Html.TextBoxFor(x => x.InvoiceSerialNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.InvoiceSequenceNo)
+    @Html.TextBoxFor(x => x.InvoiceSequenceNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TaxAdministration)
+    @Html.TextBoxFor(x => x.TaxAdministration, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Hour)
+    @Html.TextBoxFor(x => x.Hour, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.ReceiverPerson)
+    @Html.TextBoxFor(x => x.ReceiverPerson, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.DeliveringPerson)
+    @Html.TextBoxFor(x => x.DeliveringPerson, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TotalPrice)
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+
+}
+

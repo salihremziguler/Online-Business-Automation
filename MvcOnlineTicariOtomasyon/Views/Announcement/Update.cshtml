@@ -1,0 +1,24 @@
+﻿﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Message
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Duyuru Güncelle</h2>
+<br />
+@using (Html.BeginForm("Update", "Announcement", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.MessageId)
+        <label>Başlık</label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "" })
+        <br />
+       <label>İçerik</label>
+        @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @required = "" })
+        <br />
+        <label>Tarih</label>
+        <input type="text" name="Date" value="@DateTime.Now" class="form-control" readonly />
+    </div>
+    <button class="btn btn-primary" style="width:120px" id="btn1"><i class="fas fa-pencil-alt"></i> Güncelle</button>
+    <a class="btn btn-secondary" href="/Announcement/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+}

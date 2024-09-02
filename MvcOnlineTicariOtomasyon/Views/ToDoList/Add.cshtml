@@ -1,0 +1,24 @@
+﻿﻿@model MvcOnlineTicariOtomasyon.Models.Classes.ToDoList
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yapılacak Ekle</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "" })
+    <br />
+    <p style="color:blue;margin-left:400px">Enter the last execution date.</p>
+    @Html.LabelFor(x => x.Date)
+    <input class="form-control" type="date" name="Date" required="" />
+    <br />
+    @Html.LabelFor(x => x.Hour)
+    @Html.TextBoxFor(x => x.Hour, new { @class = "form-control", @required = "" })
+    <br />
+    <button class="btn btn-primary" style="width:100PX"><i class="fas fa-plus"></i> Ekle</button>
+    <a class="btn btn-secondary" href="/ToDoList/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i>  İptal</a>
+</form>
+

@@ -1,0 +1,47 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<SalesMovement>
+@{
+    ViewBag.Title = "SalesDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2> Satış Detayı</h2>
+<br />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.SalesID</td>
+            <td>@x.Product.ProductName</td>
+            <td>@x.Current.CurrentName @x.Current.CurrentSurname</td>
+            <td>@x.Personel.PersonelName @x.Personel.PersonelSurname</td>
+            <td>@x.Price</td>
+            <td>@x.Piece</td>
+            <td>@x.TotalPrice</td>
+            <td>@x.Date</td>
+
+        </tr>
+
+    }
+
+
+</table>
+
+
+<div class="print-button">
+    <a href="javascript:window.print()" class="btn btn-default" style="background-color:aqua"><i class="fas fa-print"></i> Yazdır</a>
+</div>

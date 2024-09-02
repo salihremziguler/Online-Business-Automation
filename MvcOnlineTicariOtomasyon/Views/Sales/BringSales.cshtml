@@ -1,0 +1,55 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model SalesMovement
+@{
+    ViewBag.Title = "BringSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("UpdateSales", "Sales", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.SalesID)
+    @Html.LabelFor(x => x.Product)
+    @Html.DropDownListFor(x => x.ProductID, (List<SelectListItem>)ViewBag.value, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Cari")
+    @Html.DropDownListFor(x => x.CurrentID, (List<SelectListItem>)ViewBag.value_1, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Personel)
+    @Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.value_2, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(x => x.Piece)
+    @Html.TextBoxFor(x => x.Piece, new { @class = "form-control", id = "txt1", onchange = "multiply();" })
+    <br />
+
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", id = "txt2", onkeyup = "multiply();" })
+    <br />
+
+    @Html.LabelFor(x => x.TotalPrice)
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control", id = "txt3", @readonly = "readonly" })
+    <br />
+
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}
+
+<!--Calculate Total price-->
+<script>
+    function multiply() {
+        var number1 = document.getElementById('txt1').value;
+        var number2 = document.getElementById('txt2').value;
+        var result = parseInt(number1) * parseInt(number2);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = result;
+        }
+    }
+</script>

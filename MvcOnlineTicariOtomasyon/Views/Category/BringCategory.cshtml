@@ -1,0 +1,21 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model Category
+@{
+    ViewBag.Title = "BringCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Kategori Güncelle</h2>
+<br />
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.CategoryID)
+        <label>Kategori İsmi</label>
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    </div>
+    <button class="btn btn-primary" style="width:120px" id="btn1"><i class="fas fa-pencil-alt"></i> Güncelle</button>
+    <a class="btn btn-secondary" href="/Category/Index" style="width:120px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+}

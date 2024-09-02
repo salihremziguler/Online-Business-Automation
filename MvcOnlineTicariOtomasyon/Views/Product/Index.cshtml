@@ -1,0 +1,52 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2 style="margin-left:20px">
+    Ürünler <a href="/Product/AddProduct" class="btn btn-primary" style="width:100px;position:absolute;right:50px"><i class="fas fa-plus"></i> Ekle</a>
+</h2>
+<br />
+<table id="tbl1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>Ürün</th>
+            <th>Marka</th>
+            <th>Stok</th>
+            <th>Alış Fiyatı</th>
+            <th>Satış Fİyatı</th>
+            <th>Kategori</th>
+            <th>Görsel</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Satış Yap</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+        <tr>
+
+            <td>@x.ProductName</td>
+            <td>@x.Brand</td>
+            <td>@x.Stock</td>
+            <td>@x.PurchasePrice ₺</td>
+            <td>@x.SalesPrice ₺</td>
+            <td>@x.Category.CategoryName</td>
+            <td>
+                <img src="@x.ProductImagePath" style="width:100px;height:100px" />
+            </td>
+            <td><a href="/Product/DeleteProduct/@x.ProductID" class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Silmek istediğinizden emin misiniz?')"><strong>Sil</strong></a></td>
+            <td><a href="/Product/BringProduct/@x.ProductID" class="btn btn-outline-success"> Güncelle</a></td>
+            <td><a href="/Product/SellProduct/@x.ProductID" class="btn btn-outline-success"> Satış Yap</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+

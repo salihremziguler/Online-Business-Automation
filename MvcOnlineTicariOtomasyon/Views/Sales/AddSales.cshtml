@@ -1,0 +1,78 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model SalesMovement
+@{
+    ViewBag.Title = "AddSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Yeni Satış Sayfası</h2>
+
+
+<br />
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.Product)
+    @Html.DropDownListFor(x => x.ProductID, (List<SelectListItem>)ViewBag.value, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Cari")
+    @Html.DropDownListFor(x => x.CurrentID, (List<SelectListItem>)ViewBag.value_1, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Personel)
+    @Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.value_2, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Piece)
+    @Html.TextBoxFor(x => x.Piece, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TotalPrice)
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-primary">Satış Yapp</button>
+</form>
+
+<br />
+<h2>Satış Yap</h2>
+<br />
+<form class="form-group" method="post">
+    <label>Ürün </label>
+    <input type="text" name="ProductId" value="@ViewBag.valuee2" class="form-control" readonly />
+    <br />
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.valuee1, new { @class = "form-control" })
+    <br />
+    <label>Müşteri</label>
+    @Html.DropDownListFor(x => x.CurrentID, (List<SelectListItem>)ViewBag.current, new { @class = "form-control" })
+    <br />
+    <label>Adet</label>
+    <input type="number" class="form-control" max="10" min="1" placeholder="Lütfen adet girişi yapınız" id="txt1" onchange="multiply();" name="Piece" required="" />
+    <br />
+    <label>Fiyat</label>
+    <input type="text" name="Price" value="@ViewBag.valuee3" class="form-control" id="txt2" onkeyup="multiply();" />
+    <br />
+    <label>Toplam Tutar</label>
+    <input type="text" id="txt3" name="TotalAmount" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary" style="width:120px"><i class="fas fa-credit-card"></i> Satış Yap</button>
+    <a class="btn btn-secondary" href="/Product/Index" style="width:100px;color:white"><i class="fas fa-backspace"></i> İptal</a>
+</form>
+
+
+<!--Calculate Total price-->
+<script>
+    function multiply() {
+        var number1 = document.getElementById('txt1').value;
+        var number2 = document.getElementById('txt2').value;
+        var result = parseInt(number1) * parseInt(number2);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = result;
+        }
+    }
+</script>

@@ -1,0 +1,37 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes
+@model Current
+@{
+    ViewBag.Title = "AddCurrent";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Cariler Sayfası</h2>
+
+<br />
+
+@using (Html.BeginForm("AddCurrent", "Current", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Cari Adı</label>
+        @Html.TextBoxFor(x => x.CurrentName, new { @class = "form-control", @required = "required" })
+        @Html.ValidationMessageFor(x => x.CurrentName, "", new { @style = "color:red" })
+        <br />
+
+        <label>Cari Soyadı</label>
+        @Html.TextBoxFor(x => x.CurrentSurname, new { @class = "form-control", @required = "required" })
+        @Html.ValidationMessageFor(x => x.CurrentSurname, "", new { @style = "color:red" })
+        <br />
+
+        <label>Şehir</label>
+        @Html.TextBoxFor(x => x.CurrentCity, new { @class = "form-control", @required = "required" })
+        @Html.ValidationMessageFor(x => x.CurrentCity, "", new { @style = "color:red" })
+        <br />
+
+        <label>Mail</label>
+        @Html.TextBoxFor(x => x.CurrentMail, new { @class = "form-control", @type = "email", @required = "required" })
+        @Html.ValidationMessageFor(x => x.CurrentMail, "", new { @style = "color:red" })
+        <br />
+
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}
